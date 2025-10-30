@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV !== 'production') //NODE.ENV production ya da development olabilir
+require('dotenv').config()
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
