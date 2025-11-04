@@ -7,8 +7,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 
 var app = express();
 
@@ -22,13 +21,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use((req, res, next) => {
   console.log(` Bu bir middleware örneğidir. `);
-  next();
+  next(); //bu fonksiyon bir sonraki middleware'e geçişi sağlar
 });
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+
+app.use('/api', require('./routes/index')); //http://localhost:3000/. Buraya istek gelirse indexRouter çalışır
+//backend ve frontend ayrımı için /api ekledik
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
