@@ -1,5 +1,5 @@
-const e = require("express");
 const CustomError = require("./Error");
+const Enum = require("../config/Enum");
 
 //lib adında bir klasör oluşturduk ve içine Response.js dosyasını ekledik.
 class Response{

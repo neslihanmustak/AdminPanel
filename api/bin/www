@@ -4,13 +4,13 @@
  * Module dependencies.
  */
 
-import { config } from 'dotenv'; // Bu aynı kalabilir
-import configModule from '../config/index.js'; // İkinci 'config' adını değiştirdik
-const { CONNECTION_STRING, PORT } = configModule; // Burayı da yeni isimle güncelledik
-import app from '../app.js';
-import Debug from 'debug';   
-import http from 'http';     
-import Database from '../db/database.js';//db bağlantısı için oluşturduğumuz sınıfı import ettik
+require('dotenv').config();
+const config = require('../config');
+const { CONNECTION_STRING, PORT } = config;
+const app = require('../app');
+const Debug = require('debug');
+const http = require('http');
+const Database = require('../db/Database'); // db bağlantısı için oluşturduğumuz sınıfı import ettik
 
 const debug = Debug('api:server');
 /**
